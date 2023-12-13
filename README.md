@@ -55,3 +55,36 @@ docker compose up -d
 
 If you ran a testnet node previously make sure to first run docker compose down -v to remove the old volumes.
 
+## 5. Verify node is running
+### Option 1: Check with the node dashboard
+A node dashboard will be running on localhost on the GRAFANA_PORT you set in your .env file, which defaults to 3001: http://localhost:3001/d/L2ExecutionEngine/l2-execution-engine-overview.
+
+You can verify that your node is syncing by checking that the chain head on the dashboard (see above) is increasing. 
+Once the chain head matches what's on the block explorer, you are fully synced.
+
+### Option 2: Check with curl commands
+1. Check if the Execution Layer client is connected to Taiko L2:
+```
+curl http://localhost:8547 \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{"method":"eth_chainId","params":[],"id":1,"jsonrpc":"2.0"}'
+```
+which should return the chainId as 0x28c5f (167007):
+```
+{ "jsonrpc": "2.0", "id": 1, "result": "0x28c5f" }
+```
+2. Check if the Execution Layer client is synced by requesting the latest Taiko L2 / L3 block from the Execution Layer client:
+```
+curl http://localhost:8547 \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}'
+```
+3. If the blockNumber response value is 0 or not growing, check the Taiko L2 logs here:
+```
+docker compose logs -f
+```
+Note: You may need to use sudo docker compose logs -f if you are not in the docker group.
+## 6. Operate the node
+You can find all node operations (eg. stop node, update node, remove node, view logs) in the Node runner manual - https://taiko.xyz/docs/manuals/node-runner-manual. 
