@@ -63,6 +63,7 @@ You can verify that your node is syncing by checking that the chain head on the 
 Once the chain head matches what's on the block explorer, you are fully synced.
 
 ### Option 2: Check with curl commands
+
 1. Check if the Execution Layer client is connected to Taiko L2:
 ```
 curl http://localhost:8547 \
@@ -75,6 +76,7 @@ which should return the chainId as 0x28c5f (167007):
 { "jsonrpc": "2.0", "id": 1, "result": "0x28c5f" }
 ```
 2. Check if the Execution Layer client is synced by requesting the latest Taiko L2 / L3 block from the Execution Layer client:
+
 ```
 curl http://localhost:8547 \
   -X POST \
@@ -82,6 +84,7 @@ curl http://localhost:8547 \
   --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}'
 ```
 3. If the blockNumber response value is 0 or not growing, check the Taiko L2 logs here:
+   
 ```
 docker compose logs -f
 ```
