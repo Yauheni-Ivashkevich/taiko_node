@@ -39,7 +39,6 @@ Depending on your firewall setup, you can do a few things. You can try:
 - Using the private ip address of your machine (use something like ip addr show to get this ip address)
 
 ### Finally, set the following L1 node endpoints in your .env file:
-
 - L1_ENDPOINT_HTTP
 - L1_ENDPOINT_WS
   
@@ -63,7 +62,6 @@ You can verify that your node is syncing by checking that the chain head on the 
 Once the chain head matches what's on the block explorer, you are fully synced.
 
 ### Option 2: Check with curl commands
-
 1. Check if the Execution Layer client is connected to Taiko L2:
 ```
 curl http://localhost:8547 \
@@ -84,8 +82,8 @@ curl http://localhost:8547 \
   --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}'
 ```
 3. If the blockNumber response value is 0 or not growing, check the Taiko L2 logs here:
-   
-```
+
+   ```
 docker compose logs -f
 ```
 Note: You may need to use sudo docker compose logs -f if you are not in the docker group.
