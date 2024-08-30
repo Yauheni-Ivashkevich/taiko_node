@@ -73,7 +73,6 @@ which should return the chainId as 0x28c5f (167007):
 { "jsonrpc": "2.0", "id": 1, "result": "0x28c5f" }
 ```
 2. Check if the Execution Layer client is synced by requesting the latest Taiko L2 / L3 block from the Execution Layer client:
-
 ```
 curl http://localhost:8547 \
   -X POST \
