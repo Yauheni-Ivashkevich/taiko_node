@@ -45,7 +45,6 @@ Depending on your firewall setup, you can do a few things. You can try:
 Take a look at the comments above these values in the .env.sample to see how to set them up.
 
 ## 4. Start a node
-
 ### Make sure Docker is running and then run the following command to start the node:
 ```
 docker compose up -d
