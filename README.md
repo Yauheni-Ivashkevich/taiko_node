@@ -8,6 +8,7 @@ If using Windows, you should install Git BASH or WSL to use as your terminal.
 Meet the Geth minimum hardware requirements except for the storage requirement because Taiko nodes will require less storage. 
 As of 2023-09-18 a node uses less than 10 GB. 100 GB should be future proof enough if you intend to run your node for a while.
 
+
 # Steps
 ## 1. Clone simple-taiko-node
 ```
